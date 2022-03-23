@@ -197,7 +197,7 @@ class KeypointEditForm(FloatLayout):
         self.rotation = [
             round(rot * 180 / math.pi, 2)
             for rot in rot_thetas[
-                3 * self._smpl_kpnt_indx : 3 * self._smpl_kpnt_indx + 3
+                3 * self._smpl_kpnt_indx: 3 * self._smpl_kpnt_indx + 3
             ]
         ]
 
@@ -234,6 +234,9 @@ class KeypointEditForm(FloatLayout):
     def _apply_rule(self, type: str, axis: int, angles: Union[float, list]):
         theta_indx = self._get_theta_indx(axis)
         self._exercise_controller.add_rule(theta_indx, type, angles)
+        self._current_thetas = self._exercise_controller.exercises[
+            self._exercise_controller.current_exercise
+        ]
 
     def _delete_rule(self, axis):
         theta_indx = self._get_theta_indx(axis)
