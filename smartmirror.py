@@ -40,7 +40,7 @@ class MainPage(ScreenManager):
         self._welcome = random.choice(WELCOME_MESSAGES)
         self.installer()
         print(self.children)
-        # self.current = "exercise screen"
+        self.current = "exercise screen"
 
     def add_widget(self, screen):
         """Overload add_widget function for extra security"""
@@ -69,6 +69,7 @@ class SmartMirrorApp(App):
         for kv in os.listdir(WIDGET_PATH):
             Builder.load_file(os.path.join(WIDGET_PATH, kv, f"{kv}.kv"))
         self.settings_cls = SettingsWithSidebar
+        Window.borderless = True
         return MainPage()
 
     def subscribe(self):
